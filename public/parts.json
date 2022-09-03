@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Wrench",
+    "price": 270,
+    "img": "https://images.unsplash.com/photo-1627415861814-eccd21072157?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869",
+    "stock": "2000",
+    "order": "200",
+    "description": "Wrench for these people who works in their own house."
+  },
+  {
+    "id": 2,
+    "name": "Drilling Machine",
+    "price": 180,
+    "img": "https://images.unsplash.com/photo-1616321507403-9db926c914fd?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870",
+    "stock": "4000",
+    "order": "800",
+    "description": "This is our new coming Drill Machine."
+  },
+  {
+    "id": 3,
+    "name": "Tape",
+    "price": 50,
+    "img": "https://images.unsplash.com/photo-1559647746-9b2f216d2dc3?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774",
+    "stock": "10000",
+    "order": "600",
+    "description": "This is measure tape. "
+  },
+  {
+    "id": 4,
+    "name": "Tape",
+    "price": 50,
+    "img": "https://images.unsplash.com/photo-1559647746-9b2f216d2dc3?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774",
+    "stock": "10000",
+    "order": "600",
+    "description": "This is measure tape. "
+  },
+  {
+    "id": 5,
+    "name": "Tape",
+    "price": 50,
+    "img": "https://images.unsplash.com/photo-1559647746-9b2f216d2dc3?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774",
+    "stock": "10000",
+    "order": "600",
+    "description": "This is measure tape. "
+  },
+  {
+    "id": 6,
+    "name": "Tape",
+    "price": 50,
+    "img": "https://images.unsplash.com/photo-1559647746-9b2f216d2dc3?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774",
+    "stock": "10000",
+    "order": "600",
+    "description": "This is measure tape. "
+  }
+]
