@@ -18,7 +18,7 @@ const Banner = () => {
     </div>
   </div> 
   <div id="slide3" class="carousel-item relative w-full">
-    <img style={{height: "700px"}} src="https://i.ibb.co/dBbKvP5/Banner3.jpg" class="w-full" alt=''/>
+    <img style={{height: "700px"}} src="https://i.ibb.co/fG0ZBt7/img12.webp" class="w-full" alt=''/>
     <div><h1 class="fixed">New Parts, New Machine</h1></div>
     <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
       <a href="#slide2" class="btn btn-circle">❮</a> 

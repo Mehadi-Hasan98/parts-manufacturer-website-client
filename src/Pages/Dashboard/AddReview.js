@@ -10,7 +10,7 @@ const AddReview = () => {
     const [user] = useAuthState(auth);
 
     const onSubmitFrom = data => {
-        const url = `https://blooming-stream-16978.herokuapp.com/review`;
+        const url = `http://localhost:5000/review`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -35,41 +35,41 @@ const AddReview = () => {
           onSubmit={handleSubmit(onSubmitFrom)}
         >
           <input
-            className="w-80 rounded border-2 border-primary  mb-5 py-4 px-10"
+            className="w-80 rounded border-2 border-primary  mb-5 py-3 px-10"
             placeholder="User Photo URL"
             type="text"
             {...register("img")}
           />
           <input
-            className="w-80 rounded border-2 border-primary  mb-5 py-4 px-10"
+            className="w-80 rounded border-2 border-primary  mb-5 py-3 px-10"
             placeholder="Name"
             {...register("name", { required: true })}
           />
           <input
-            className="w-80 rounded  border-2 border-primary  mb-5 py-4 px-10"
+            className="w-80 rounded  border-2 border-primary  mb-5 py-3 px-10"
             value={user.email}
             {...register("email", { required: true })}
           />
           <input
-            className="w-80 rounded border-2 border-primary  mb-5 py-4 px-10"
+            className="w-80 rounded border-2 border-primary  mb-5 py-3 px-10"
             placeholder="Description"
             type="text"
             {...register("description", { required: true })}
           />
           <input
-            className="w-80 rounded border-2 border-solid border-primary  mb-5 py-4 px-10"
+            className="w-80 rounded border-2 border-solid border-primary  mb-5 py-3 px-10"
             placeholder="Address"
             type="text"
             {...register("address", { required: true })}
           />
           <input
-            className="w-80 rounded border-2 border-primary  mb-5 py-4 px-10"
+            className="w-80 rounded border-2 border-primary  mb-5 py-3 px-10"
             placeholder="Rating"
             type="text"
             {...register("rating", { required: true })}
           />
           <input
-            className="product-btn rounded bg-primary py-4 mb-16 text-white text-xl"
+            className="py-2 mb-20 px-6 bg-cyan-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 font-mono"
             type="Submit"
             value="Post Review"
           />

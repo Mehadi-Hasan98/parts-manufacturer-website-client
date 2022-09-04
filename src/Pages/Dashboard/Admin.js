@@ -5,7 +5,7 @@ import UserRow from './UserRow';
 
 const Admin = () => {
 
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://blooming-stream-16978.herokuapp.com/user', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user', {
         method: 'GET'
         
     })
@@ -17,7 +17,7 @@ const Admin = () => {
     return (
         <div>
             <h2 className='text-center text-xl mt-16 font-bold font-mono text-rose-600'>For Admin Purpose Only</h2>
-            <div className="overflow-x-auto mt-10  mx-28">
+            <div className="overflow-x-auto mt-10 mb-20 mx-28">
                 <table className="table w-full border rounded">
                     <thead>
                         <tr>

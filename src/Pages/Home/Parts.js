@@ -7,6 +7,7 @@ const Parts = () => {
 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const reverse = [...products].reverse();
     const navigate = useNavigate();
 
     if(!loading){
@@ -17,7 +18,7 @@ const Parts = () => {
     }
      
     useEffect( () => {
-        fetch('parts.json')
+        fetch('http://localhost:5000/product')
         .then(res => res.json())
         .then(data => setProducts(data))
     },[]);
@@ -28,11 +29,11 @@ const Parts = () => {
    
     return (
         <div>
-            <h1 className='text-3xl text-center font-bold mb-2 mt-20 font-mono'>Parts</h1>
+            <h1 className='text-3xl text-center font-bold mb-2 mt-20 font-mono'>Latest Parts</h1>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-16 mt-4 font-mono gap-4'>
           
           {
-            products.slice(0, 6).map(product => <div
+            reverse.slice(0, 9).map(product => <div
             key={product.id}
             product={product}
             >
@@ -47,7 +48,7 @@ const Parts = () => {
     <h6>Minimum Order: {product.order}</h6>
     <p>Description: {product.description}</p>
     <div className="card-actions">
-      <button className="btn btn-primary" onClick={ () => handlePurchase(product.id)}>Purchase</button>
+      <button className="btn btn-primary" onClick={ () => handlePurchase(product._id)}>Purchase</button>
     </div>
   </div>
 </div>

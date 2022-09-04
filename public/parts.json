@@ -52,5 +52,59 @@
     "stock": "10000",
     "order": "600",
     "description": "Brand new product."
+  },
+  {
+    "id": 7,
+    "name": "Piston",
+    "price": 350,
+    "img": "https://i.ibb.co/Qkrb7gh/img7.webp",
+    "stock": "1000",
+    "order": "50",
+    "description": "Brand new product."
+  },
+  {
+    "id": 8,
+    "name": "Tier Pressure Gauge",
+    "price": 150,
+    "img": "https://i.ibb.co/nw9P25Q/img8.webp",
+    "stock": "6500",
+    "order": "600",
+    "description": "Brand new product."
+  },
+  {
+    "id": 9,
+    "name": "Engine Fan",
+    "price": 80,
+    "img": "https://i.ibb.co/DwznGpL/img9.webp",
+    "stock": "7000",
+    "order": "300",
+    "description": "Brand new product."
+  },
+  {
+    "id": 10,
+    "name": "Seat Belt",
+    "price": 10,
+    "img": "https://i.ibb.co/Csp7vXD/img10.webp",
+    "stock": "10000",
+    "order": "1000",
+    "description": "Brand new product."
+  },
+  {
+    "id": 11,
+    "name": "Steering Wheel",
+    "price": 70,
+    "img": "https://i.ibb.co/1Gpr3LJ/img11.webp",
+    "stock": "5000",
+    "order": "600",
+    "description": "Brand new product."
+  },
+  {
+    "id": 12,
+    "name": "Windscreen",
+    "price": 250,
+    "img": "https://i.ibb.co/fG0ZBt7/img12.webp",
+    "stock": "3500",
+    "order": "200",
+    "description": "Brand new product."
   }
 ]

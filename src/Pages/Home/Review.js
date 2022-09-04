@@ -4,14 +4,14 @@ const Review = () => {
     const [reviews, setReviews] = useState([]);
     const reverse = [...reviews].reverse();
     useEffect(() => {
-      fetch("review.json")
+      fetch("http://localhost:5000/review")
         .then((res) => res.json())
         .then((data) => setReviews(data));
     }, []);
     return (
         <div>
-            <h1 className='text-3xl text-center font-bold mt-16 mb-10'>Customer Review</h1>
-            <div className="grid sm:grid-cols-1 lg:grid-cols-3 md:px-24">
+            <h1 className='text-3xl text-center font-bold font-mono mt-32 mb-6'>Customer Review</h1>
+            <div className="grid sm:grid-cols-1 lg:grid-cols-3 md:px-24 mb-10">
         {reverse.map((review) => (
           <div key={review.id}>
             <div style={{height: "430px"}} className="card mx-auto w-80 bg-base-100 shadow-xl mt-12 font-mono">

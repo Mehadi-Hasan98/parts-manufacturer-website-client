@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 const UserRow = ({user, refetch}) => {
     const { email, role } = user;
     const makeAdmin = () => {
-        fetch(`https://blooming-stream-16978.herokuapp.com/user/admin/${email}`, {
+        fetch(`http://localhost:5000/user/admin/${email}`, {
             method: 'PUT'
             
         })
@@ -19,10 +19,10 @@ const UserRow = ({user, refetch}) => {
 
     return (
         <tr>
-            <th>1</th>
+            <th>User - </th>
             <td>{email}</td>
-            <td>{role !== 'admin' && <button onClick={makeAdmin} className="btn btn-xs border-emerald-400 text-emerald-600 bg-transparent">Make Admin</button>}</td>
-            <td><button className="btn btn-xs border-red-500 bg-transparent text-red-600">Remove User </button></td>
+            <td>{role !== 'admin' && <button onClick={makeAdmin} className="py-1 px-2 bg-cyan-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 font-mono">Make Admin</button>}</td>
+            <td><button className="py-1 px-2 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75 font-mono">Remove User </button></td>
         </tr>
     );
 };

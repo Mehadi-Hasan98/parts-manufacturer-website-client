@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from "react-router-dom";
@@ -8,34 +9,72 @@ import auth from '../../firebase.init';
 
 const Purchase = () => {
 
+    const [newData, setNewData] = useState(false);
+    const [stockNumber, setStockNumber] = useState({stock: ""});
+
+    let name, value;
+    const getUserData = (e) => {
+      name = e.target.name;
+      value = e.target.value;
+      setStockNumber({ ...stockNumber, [name]: value });
+      e.preventDefault();
+      
+    };
+
+     // update data
+     const handleUpdate = async (id, quantity) => { 
+        const {stock} = stockNumber;
+        toast('Stock updated');
+        console.log(stock)
+        const getQuantity = parseInt(quantity) + parseInt(stock);
+       
+        const newQuantity = {
+          quantity: getQuantity.toString(),
+        };
+        
+    
+        // send data to the monogodb server and update
+        const url = `http://localhost:5000/product/${id}`
+        await axios.put(url, newQuantity).then((response) => {
+          const { data } = response;
+          if (data) {
+            setNewData(!newData);
+          }
+          window.location.reload(false);
+        });
+       
+      };
+
     const { register, handleSubmit, reset } = useForm();
     const [user] = useAuthState(auth);
 
   const onSubmitFrom = data => {
-    const url = `/order`;
+    const url = `http://localhost:5000/order`;
     fetch(url, {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
         },
         body: JSON.stringify(data)
+        
     })
     
     .then(res=> res.json())
     .then(result => {
         console.log(result)
         toast("Order added successfully");
+        reset();
     })
       
-    reset();
+   
 }
 
-
-    const [products, setProducts] = useState([]);
     const {id} = useParams();
+    const [products, setProducts] = useState([]);
+   
 
   useEffect( () => {
-    fetch(`parts.json/product/${id}`)
+    fetch(`http://localhost:5000/product/${id}`)
     .then(res => res.json())
     .then(data => setProducts(data))
 }, [id]);
@@ -46,10 +85,10 @@ const Purchase = () => {
        <h2 className="text-2xl text-center mb-10 font-semibold text-zinc-800">Product Details</h2>
        </div>
         <div className="flex flex-row">
-      <div style={{ height: "600px" }} className="card ml-10 mr-48 w-80 bg-base-200 shadow-xl">
-        <figure className="px-10 pt-10">
+      <div style={{ height: "600px" }} className="card ml-10 mr-48 w-96 bg-base-200 shadow-xl">
+        <figure>
           <img
-            style={{ height: "150px" }}
+            style={{ height: "200px" }}
             src={products.img}
             alt="tools"
             className="rounded-xl"
@@ -58,12 +97,16 @@ const Purchase = () => {
         <div className="card-body items-center text-center font-mono">
           <h2 className="card-title">{products.name}</h2>
           <h6>Price: ${products.price}</h6>
-          <h6>Stock: {products.stock}</h6>
-          <h6>Min Order: {products.order}</h6>
+          <h6>Available Stock: {products.stock}</h6>
+          <h6>Minimum Order: {products.order}</h6>
           <p>{products.description}</p>
-          <input className="rounded-lg py-2 px-4 outline mb-3" type="number" name="Minimum Quantity" placeholder="Enter Update Quantity"/>
+          
+          <div>
+          <input className='rounded-lg py-2 px-4 mb-2 outline' type="number" id='stock' name='stock' placeholder='Enter Quantity Number' value={stockNumber.stock} onChange={getUserData}/>
+          </div>
+          
           <div className="flex">
-          <button className="py-2 mr-2  px-4 bg-cyan-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 font-mono">Increase</button>
+          <button onClick={() => handleUpdate(products._id, products.quantity)} className="py-2 mr-2  px-4 bg-cyan-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 font-mono">Increase</button>
           <button className="py-2 ml-2 px-4 bg-cyan-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 font-mono">Decrease</button>
           </div>
         </div>
@@ -109,7 +152,7 @@ const Purchase = () => {
             {...register("phone number", { required: true })}
           />
           <input
-            className="py-2 ml-2 px-4 bg-cyan-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 font-mono"
+            className="py-2 px-4 bg-cyan-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 font-mono"
             type="Submit"
             value="CONFIRM ORDER"
           />

@@ -48,8 +48,8 @@ const Login = () => {
 
     return (
         <div className="flex h-screen justify-center items-center">
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <div className="card-body login-form">
+      <div className="card w-80 bg-base-200 shadow-xl login-form mb-10 mt-10">
+        <div className="card-body">
           <h2 className="text-center text-2xl font-bold font-mono">Please Login</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control w-full max-w-xs">

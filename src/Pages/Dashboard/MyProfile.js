@@ -11,7 +11,7 @@ const MyProfile = () => {
     const [info, setInfo] = useState([]);
     useEffect( () =>{
         const email = user.email;
-        fetch(`https://blooming-stream-16978.herokuapp.com/information/email=${email}`)
+        fetch(`http://localhost:5000/information/email=${email}`)
 
         .then(res => res.json())
         .then(data => setInfo(data))
@@ -19,7 +19,7 @@ const MyProfile = () => {
     console.log(info)
 
     const onSubmitFrom = data => {
-        const url = `https://blooming-stream-16978.herokuapp.com/information`;
+        const url = `http://localhost:5000/information`;
         fetch(url, {
             method: 'POST',
             headers: {

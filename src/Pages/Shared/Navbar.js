@@ -19,10 +19,11 @@ const Navbar = () => {
         <li><NavLink to="/portfolio">Portfolio</NavLink></li>
         
         <li>{user? <button className="btn btn-ghost text-xl"  onClick={logout} >Log Out</button> : <Link to="/login">Login</Link>}</li>
+        <li>{user? user.displayName : ''}</li>
     
     </>
     return (
-        <div class="navbar bg-white font-mono text-xl px-12 text-zinc-100">
+        <div class="navbar bg-base-300 font-mono text-xl px-12 text-zinc-100">
   <div class="navbar-start">
     <div class="dropdown">
       <label tabindex="0" class="btn btn-ghost lg:hidden">
