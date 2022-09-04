@@ -36,15 +36,15 @@ const Parts = () => {
             key={product.id}
             product={product}
             >
-                <div style={{height: "570px"}} className="card w-80 bg-base-200 mt-10 mx-auto shadow-xl">
-  <figure className="px-10 pt-10">
-    <img style={{height: "200px"}} src={product.img} alt="tools" className="rounded-xl w-full" />
+                <div style={{height: "470px"}} className="card w-80 bg-base-200 mt-10 mx-auto shadow-xl">
+  <figure>
+    <img  style={{height: "150px"}} src={product.img} alt="tools" className="rounded-xl w-full" />
   </figure> 
   <div className="card-body items-center text-center font-mono">
     <h2 className="card-title">{product.name}</h2>
     <h6>Price: ${product.price}</h6>
-    <h6>Stock: {product.stock}</h6>
-    <h6>Min Order: {product.order}</h6>
+    <h6>Available Stock: {product.stock}</h6>
+    <h6>Minimum Order: {product.order}</h6>
     <p>Description: {product.description}</p>
     <div className="card-actions">
       <button className="btn btn-primary" onClick={ () => handlePurchase(product.id)}>Purchase</button>

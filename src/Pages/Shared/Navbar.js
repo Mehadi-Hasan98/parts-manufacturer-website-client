@@ -14,9 +14,11 @@ const Navbar = () => {
     const menuItems = <>
 
         <li><NavLink to="/">Home</NavLink></li>
+       <li><NavLink to="/dashboard">Dashboard</NavLink></li>
         <li><NavLink to="/blogs">Blog</NavLink></li>
         <li><NavLink to="/portfolio">Portfolio</NavLink></li>
-        <li><NavLink to="/login">Login</NavLink></li>
+        
+        <li>{user? <button className="btn btn-ghost text-xl"  onClick={logout} >Log Out</button> : <Link to="/login">Login</Link>}</li>
     
     </>
     return (
@@ -34,10 +36,7 @@ const Navbar = () => {
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal p-0 text-gray-700">
-      <li><NavLink to="/">Home</NavLink></li>
-      <li><NavLink to="/blogs">Blog</NavLink></li>
-      <li><NavLink to="/portfolio">Portfolio</NavLink></li>
-      <li>{user? <button className="btn btn-ghost text-xl"  onClick={logout} >Log Out</button> : <Link to="/login">Login</Link>}</li>
+     {menuItems}
     </ul>
   </div>
 </div>
