@@ -1,15 +1,44 @@
 import React, { useEffect, useState } from "react";
+import { toast } from 'react-toastify';
 
 const ManageAllOrders = () => {
   const [allOrders, setAllOrders] = useState([]);
+  const reverse = [...allOrders].reverse();
 
-  
+  const handleDelete = (id) => {
+    const proceed = window.confirm("Are You Sure?");
+    if (proceed) {
+      const url = `http://localhost:5000/order/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          const remaining = allOrders.filter((product) => product._id !== id);
+          setAllOrders(remaining);
+        });
+    }
+  };
 
   useEffect(() => {
     fetch("http://localhost:5000/order")
       .then((res) => res.json())
       .then((data) => setAllOrders(data));
   }, []);
+
+
+  const handleUpdateStatus = (id)=>{
+    fetch(`http://localhost:5000/order/shipped/${id}`,{
+      method: 'PUT'
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      toast('Order Shipped Successfully!');
+    }) 
+  }
+
+
   return (
     <div>
       <div className="overflow-x-auto mt-16 mb-20">
@@ -24,7 +53,7 @@ const ManageAllOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {allOrders.map((myorder) => (
+            {reverse.map((myorder) => (
               <tr>
                 <td>{myorder.name}</td>
                 <td>{myorder.email}</td>
@@ -32,12 +61,12 @@ const ManageAllOrders = () => {
                 <td> {(myorder.price && !myorder.paid) && <div className="mb-2">
                                         <button className='btn btn-xs bg-slate-800 btn-outline text-zinc-100 font-semibold mb-2'>unpaid</button>
                                         <div>
-                                        <button className="btn btn-error btn-xs">Cancel</button>
+                                        <button onClick={() => handleDelete(myorder._id)} className="btn btn-error btn-xs">Cancel</button>
                                         </div>
                                         
                                     </div>}
                   {(myorder.price && myorder.paid) && <div>
-                                        <button className='btn btn-xs bg-secondary btn-outline text-zinc-800 font-semibold'>pending</button>
+                                        <button onClick={()=> handleUpdateStatus(myorder._id)} className='btn btn-xs bg-secondary btn-outline text-zinc-800 font-semibold'>{myorder.paid}</button>
                                     </div>}
                   </td>
                 

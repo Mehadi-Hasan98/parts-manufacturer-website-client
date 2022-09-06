@@ -119,7 +119,7 @@ const Purchase = () => {
             className="w-80 rounded border-2 outline mb-5 py-4 px-10"
             placeholder="Name"
             value={user.displayName}
-            {...register("name", { required: true })}
+            {...register("name")}
           />
           <input
             className="w-80 rounded  border-2 outline mb-5 py-4 px-10" readOnly
@@ -130,13 +130,13 @@ const Purchase = () => {
             className="w-80 rounded border-2 outline mb-5 py-4 px-10"
             placeholder="Product Name"
             value={products.name}
-            {...register("productName", { required: true })}
+            {...register("productName")}
           />
           <input
             className="w-80 rounded border-2 outline mb-5 py-4 px-10"
             placeholder="price"
             value={products.price}
-            {...register("price", { required: true })}
+            {...register("price")}
           />
           <div>
           <p className='mb-2 w-full text-red-500'> {errors.order?.type === 'required' && "Quantity is required*"}</p>
@@ -156,7 +156,7 @@ const Purchase = () => {
             className="w-80 rounded border-2 border-solid outline mb-5 py-4 px-10"
             placeholder="Your Address"
             type="text"
-            {...register("address", { required: true })}
+            {...register("address")}
           />
             </div>
          
@@ -164,7 +164,7 @@ const Purchase = () => {
             className="w-80 rounded border-2 outline mb-5 py-4 px-10"
             placeholder="Phone Number"
             type="number"
-            {...register("phone number", { required: true })}
+            {...register("phone number")}
           />
           <input
             className="py-2 px-4 bg-cyan-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 font-mono"
