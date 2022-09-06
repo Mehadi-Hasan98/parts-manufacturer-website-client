@@ -57,7 +57,7 @@ const Contact = () => {
             </div>
            <br/>
             <input
-              className="btn btn-primary w-full max-w-xs text-white mb-10"
+              className="py-2 mb-20 px-20 bg-cyan-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 font-mono"
               type="submit"
               value="Send"
             />

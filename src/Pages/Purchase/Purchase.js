@@ -10,27 +10,27 @@ import auth from '../../firebase.init';
 const Purchase = () => {
 
     const [newData, setNewData] = useState(false);
-    const [stockNumber, setStockNumber] = useState({stock: ""});
+    const [stockNumber, setStockNumber] = useState({quantity: ""});
 
     let name, value;
     const getUserData = (e) => {
       name = e.target.name;
       value = e.target.value;
       setStockNumber({ ...stockNumber, [name]: value });
-      e.preventDefault();
-      
+      e.preventDefault(); 
     };
 
      // update data
-     const handleUpdate = async (id, quantity) => { 
-        const {stock} = stockNumber;
+     const handleUpdate = async (id, stock) => { 
+        const {quantity} = stockNumber;
         toast('Stock updated');
         console.log(stock)
         const getQuantity = parseInt(quantity) + parseInt(stock);
-       
+       console.log(getQuantity);
         const newQuantity = {
-          quantity: getQuantity.toString(),
+          stock: getQuantity.toString(),
         };
+     
         
     
         // send data to the monogodb server and update
@@ -39,13 +39,13 @@ const Purchase = () => {
           const { data } = response;
           if (data) {
             setNewData(!newData);
+            window.location.reload(false);
           }
-          window.location.reload(false);
         });
        
       };
 
-    const { register, handleSubmit, reset } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [user] = useAuthState(auth);
 
   const onSubmitFrom = data => {
@@ -102,12 +102,11 @@ const Purchase = () => {
           <p>{products.description}</p>
           
           <div>
-          <input className='rounded-lg py-2 px-4 mb-2 outline' type="number" id='stock' name='stock' placeholder='Enter Quantity Number' value={stockNumber.stock} onChange={getUserData}/>
+          <input className='rounded-lg py-2 px-4 mb-2 outline' type="number" id='stock' name='quantity' placeholder='Enter Quantity Number' value={stockNumber.stock} onChange={getUserData}/>
           </div>
           
           <div className="flex">
-          <button onClick={() => handleUpdate(products._id, products.quantity)} className="py-2 mr-2  px-4 bg-cyan-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 font-mono">Increase</button>
-          <button className="py-2 ml-2 px-4 bg-cyan-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 font-mono">Decrease</button>
+          <button onClick={() => handleUpdate(products._id, products.stock)} className="py-2 mr-2  px-4 bg-cyan-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 font-mono">Increase</button>
           </div>
         </div>
       </div>
@@ -135,16 +134,32 @@ const Purchase = () => {
           />
           <input
             className="w-80 rounded border-2 outline mb-5 py-4 px-10"
-            placeholder="Price"
+            placeholder="price"
             value={products.price}
             {...register("price", { required: true })}
           />
+          <div>
+          <p className='mb-2 w-full text-red-500'> {errors.order?.type === 'required' && "Quantity is required*"}</p>
+                        <p className='mb-2 w-full text-red-500'> {errors.order?.type === 'min' && "Enter Minimum Quantity"}</p>
+                        <p className='mb-2 w-full text-red-500'> {errors.order?.type === 'max' && "Enter less than available stock"}</p>
+                        <input
+            className="w-80 rounded border-2 outline mb-5 py-4 px-10"
+            placeholder={"Minimum order " + products.order}
+            // value={products.order}
+            {...register("order", { required: true, min: products.order, max: products.stock })}
+          />
+          </div>
+          
+          <div>
+          <p className='mb-3 text-red-500'> {errors.address?.type === 'required' && "Address is required*"}</p>
           <input
             className="w-80 rounded border-2 border-solid outline mb-5 py-4 px-10"
             placeholder="Your Address"
             type="text"
             {...register("address", { required: true })}
           />
+            </div>
+         
           <input
             className="w-80 rounded border-2 outline mb-5 py-4 px-10"
             placeholder="Phone Number"

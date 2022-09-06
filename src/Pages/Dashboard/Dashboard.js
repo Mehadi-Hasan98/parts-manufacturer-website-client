@@ -24,12 +24,12 @@ const Dashboard = () => {
           <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
           <ul className="menu font-mono p-4 font-semibold overflow-y-auto w-64 bg-base-100 text-zinc-800">
             {/* <!-- Sidebar content here --> */}
-            <li>
+            <li className='mb-2'>
               <NavLink to="/dashboard">My Profile</NavLink>
             </li>
             {!admin && (
               <>
-                <li>
+                <li className='mb-2'>
                   <NavLink to="/dashboard/myorders">My Orders</NavLink>
                 </li>
                 <li>
@@ -40,18 +40,18 @@ const Dashboard = () => {
 
             {admin && (
               <>
-                <li>
+                <li className='mb-2'>
                   <NavLink to="/dashboard/makeAdmin">Make Admin</NavLink>
                 </li>
-                <li>
+                <li className='mb-2'>
                   <NavLink to="/dashboard/addProducts">Add Products</NavLink>
                 </li>
-                <li>
+                <li className='mb-2'>
                   <NavLink to="/dashboard/manageProducts">
                     Manage Products
                   </NavLink>
                 </li>
-                <li>
+                <li className='mb-2'>
                   <NavLink to="/dashboard/manageOrders">
                     Manage All Orders
                   </NavLink>

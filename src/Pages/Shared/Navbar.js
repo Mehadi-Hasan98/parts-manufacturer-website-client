@@ -16,10 +16,10 @@ const Navbar = () => {
         <li><NavLink to="/">Home</NavLink></li>
        <li><NavLink to="/dashboard">Dashboard</NavLink></li>
         <li><NavLink to="/blogs">Blog</NavLink></li>
-        <li><NavLink to="/portfolio">Portfolio</NavLink></li>
+        {/* <li><NavLink to="/portfolio">Portfolio</NavLink></li> */}
         
-        <li>{user? <button className="btn btn-ghost text-xl"  onClick={logout} >Log Out</button> : <Link to="/login">Login</Link>}</li>
-        <li>{user? user.displayName : ''}</li>
+        <li>{user? <button className="btn btn-ghost text-xl mb-2"  onClick={logout} >Log Out</button> : <Link to="/login">Login</Link>}</li>
+        <li className='mt-3 text-red-500'>{user? user.displayName : ''}</li>
     
     </>
     return (

@@ -39,8 +39,8 @@ const MyProfile = () => {
     return (
         <div>
         <h2 className='text-2xl font-semibold text-zinc-800 text-center text-semiBold font-mono mt-10'>My Profile</h2>
-        <h1 className='text-xl text-center mt-10 text-gray-800 '>Name: <span className='text-red-800'>{user.displayName}</span></h1>
-        <h2 className='text-xl text-center mt-6 text-gray-800'>Email: <span className='text-red-800'>{user.email}</span></h2>
+        <h1 className='text-xl text-center mt-10 text-gray-800 '>Name: <span className='text-blue-800'>{user.displayName}</span></h1>
+        <h2 className='text-xl text-center mt-6 text-gray-800'>Email: <span className='text-blue-800'>{user.email}</span></h2>
         <h2>{}</h2>
 
         <form
@@ -48,30 +48,30 @@ const MyProfile = () => {
       onSubmit={handleSubmit(onSubmitFrom)}
     >
       <input
-        className="w-80 rounded border-2 outline  mb-5 py-4 px-10"
+        className="w-80 rounded border-2 outline  mb-5 py-3 px-10"
         placeholder="Education"
         type="text"
         {...register("education", { required: true })}
       />
       <input
-        className="w-80 rounded border-2 border-solid outline  mb-5 py-4 px-10"
+        className="w-80 rounded border-2 border-solid outline  mb-5 py-3 px-10"
         placeholder="Location"
         type="text"
         {...register("location", { required: true })}
       />
      <input
-        className="w-80 rounded border-2 outline  mb-5 py-4 px-10"
+        className="w-80 rounded border-2 outline  mb-5 py-3 px-10"
         placeholder="Phone Number"
         type="number"
         {...register("phone number", { required: true })}
       />
       <input
-        className="w-80 rounded  border-2 outline  mb-5 py-4 px-10"
+        className="w-80 rounded  border-2 outline  mb-5 py-3 px-10"
         value={user.email}
         {...register("email", { required: true })}
       />
       <input
-        className="w-80 rounded border-2 outline  mb-5 py-4 px-10"
+        className="w-80 rounded border-2 outline  mb-5 py-3 px-10"
         placeholder="LinkedIn Profile Link"
         type="text"
         {...register("link")}

@@ -23,9 +23,9 @@ const AllProducts = ({product}) => {
         <div className="grid md:px-20">
         <div
           style={{ height: "550px" }}
-          className="card w-80 bg-base-100 mt-10 mb-16 shadow-xl"
+          className="card w-80 bg-base-200 mt-10 mb-16 shadow-xl"
         >
-          <figure className="px-10 pt-10">
+          <figure>
             <img
               style={{ height: "200px" }}
               src={product.img}

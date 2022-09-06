@@ -6,9 +6,9 @@ const useAdmin = user => {
     useEffect( () => {
         const email = user?.email;
         if(email){
-            fetch(`https://blooming-stream-16978.herokuapp.com/admin/${email}`, {
+            fetch(`http://localhost:5000/admin/${email}`, {
                 method:'GET',
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                // authorization: `Bearer ${localStorage.getItem('accessToken')}`
             })
             .then(res=>res.json())
             .then(data => {

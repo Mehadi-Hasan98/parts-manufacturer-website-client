@@ -2,6 +2,7 @@ import React from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import './Login.css';
@@ -43,6 +44,7 @@ const Login = () => {
 
       const onSubmit = async (data) => {
         await signInWithEmailAndPassword(data.email, data.password);
+        toast('Successfully logged in');
         navigate(from, { replace: true });
       };
 
