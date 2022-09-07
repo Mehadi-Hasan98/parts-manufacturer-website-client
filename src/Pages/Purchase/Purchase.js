@@ -34,7 +34,7 @@ const Purchase = () => {
         
     
         // send data to the monogodb server and update
-        const url = `http://localhost:5000/product/${id}`
+        const url = `https://quiet-garden-90243.herokuapp.com/product/${id}`
         await axios.put(url, newQuantity).then((response) => {
           const { data } = response;
           if (data) {
@@ -49,7 +49,7 @@ const Purchase = () => {
     const [user] = useAuthState(auth);
 
   const onSubmitFrom = data => {
-    const url = `http://localhost:5000/order`;
+    const url = `https://quiet-garden-90243.herokuapp.com/order`;
     fetch(url, {
         method: 'POST',
         headers: {
@@ -74,7 +74,7 @@ const Purchase = () => {
    
 
   useEffect( () => {
-    fetch(`http://localhost:5000/product/${id}`)
+    fetch(`https://quiet-garden-90243.herokuapp.com/product/${id}`)
     .then(res => res.json())
     .then(data => setProducts(data))
 }, [id]);
@@ -129,13 +129,13 @@ const Purchase = () => {
           <input
             className="w-80 rounded border-2 outline mb-5 py-4 px-10"
             placeholder="Product Name"
-            value={products.name}
+            value={products.displayName}
             {...register("productName")}
           />
           <input
             className="w-80 rounded border-2 outline mb-5 py-4 px-10"
             placeholder="price"
-            value={products.price}
+            // value={products.price}
             {...register("price")}
           />
           <div>

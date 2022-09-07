@@ -13,7 +13,7 @@ const stripePromise = loadStripe('pk_test_51L1vFzL3PNLJowQNhsFLqJvEohTo2QfIVCyvy
 const Payment = () => {
     const [user] = useAuthState(auth);
     const {id} = useParams();
-    const url = `http://localhost:5000/order/${id}`;
+    const url = `https://quiet-garden-90243.herokuapp.com/order/${id}`;
 
     const { data: myorder , isLoading } = useQuery('order', () => fetch(url, {
         method: 'GET',

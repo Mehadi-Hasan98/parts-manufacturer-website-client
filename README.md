@@ -1,10 +1,16 @@
-# Getting Started with Create React App
+# Parts Manufacturer Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Website Name - [GearBox](https://tools-manufacturer-websi-dedfa.web.app).
 
-## Available Scripts
+## Website Features
 
-In the project directory, you can run:
+- This is a Parts manufacturer website. Here you will see Car parts and it's detail.
+- It is React js project. Used Tailwind css and DaisyUi for the design section.
+- Used React Router, React Hook, React Query, React Hook Form, React toastify and many more...
+- Used Firebase Authentication system for login/signup system.
+- In the website, a user can order product and can pay for their product.
+- An admin user can see some private routes and can add products.
+- admin can remove any user and can delete any product.
 
 ### `npm start`
 

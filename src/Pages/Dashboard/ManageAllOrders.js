@@ -8,7 +8,7 @@ const ManageAllOrders = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are You Sure?");
     if (proceed) {
-      const url = `http://localhost:5000/order/${id}`;
+      const url = `https://quiet-garden-90243.herokuapp.com/order/${id}`;
       fetch(url, {
         method: "DELETE",
       })
@@ -16,19 +16,20 @@ const ManageAllOrders = () => {
         .then((data) => {
           const remaining = allOrders.filter((product) => product._id !== id);
           setAllOrders(remaining);
+          toast('Item canceled');
         });
     }
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/order")
+    fetch("https://quiet-garden-90243.herokuapp.com/order")
       .then((res) => res.json())
       .then((data) => setAllOrders(data));
   }, []);
 
 
   const handleUpdateStatus = (id)=>{
-    fetch(`http://localhost:5000/order/shipped/${id}`,{
+    fetch(`https://quiet-garden-90243.herokuapp.com/order/shipped/${id}`,{
       method: 'PUT'
     })
     .then(res => res.json())
@@ -41,7 +42,7 @@ const ManageAllOrders = () => {
 
   return (
     <div>
-      <div className="overflow-x-auto mt-16 mb-20">
+      <div className="overflow-x-auto mt-16 mb-20 mx-6">
         <table className="table w-full">
           <thead>
             <tr>
@@ -53,7 +54,8 @@ const ManageAllOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {reverse.map((myorder) => (
+            {
+            reverse.map((myorder) => (
               <tr>
                 <td>{myorder.name}</td>
                 <td>{myorder.email}</td>

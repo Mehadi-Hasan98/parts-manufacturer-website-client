@@ -6,7 +6,7 @@ const UserRow = ({user, refetch}) => {
    const [users, setUsers] = useState([]);
 
    useEffect( ()=>{
-    fetch('http://localhost:5000/user')
+    fetch('https://quiet-garden-90243.herokuapp.com/user')
     .then(res=> res.json())
     .then(data => setUsers(data))
    }, []);
@@ -18,7 +18,7 @@ const UserRow = ({user, refetch}) => {
     const handleDelete = (id) => {
         const proceed = window.confirm("Are You Sure?");
         if (proceed) {
-          const url = `http://localhost:5000/user/${id}`;
+          const url = `https://quiet-garden-90243.herokuapp.com/user/${id}`;
           fetch(url, {
             method: "DELETE",
           })
@@ -26,14 +26,18 @@ const UserRow = ({user, refetch}) => {
             .then((data) => {
               const remaining = users.filter((user) => user._id !== id);
               setUsers(remaining);
+              refetch();
               toast.success(`User removed`);
             });
         }
       };
 
     const makeAdmin = () => {
-        fetch(`http://localhost:5000/user/admin/${email}`, {
-            method: 'PUT'
+        fetch(`https://quiet-garden-90243.herokuapp.com/user/admin/${email}`, {
+            method: 'PUT',
+            // headers: {
+            //     authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            // }
             
         })
         .then(res => res.json())

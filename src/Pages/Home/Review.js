@@ -4,7 +4,7 @@ const Review = () => {
     const [reviews, setReviews] = useState([]);
     const reverse = [...reviews].reverse();
     useEffect(() => {
-      fetch("http://localhost:5000/review")
+      fetch("https://quiet-garden-90243.herokuapp.com/review")
         .then((res) => res.json())
         .then((data) => setReviews(data));
     }, []);

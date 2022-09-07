@@ -11,7 +11,7 @@ const MyProfile = () => {
     const [info, setInfo] = useState([]);
     useEffect( () =>{
         const email = user.email;
-        fetch(`http://localhost:5000/information/email=${email}`)
+        fetch(`https://quiet-garden-90243.herokuapp.com/information/email=${email}`)
 
         .then(res => res.json())
         .then(data => setInfo(data))
@@ -19,7 +19,7 @@ const MyProfile = () => {
     console.log(info)
 
     const onSubmitFrom = data => {
-        const url = `http://localhost:5000/information`;
+        const url = `https://quiet-garden-90243.herokuapp.com/information`;
         fetch(url, {
             method: 'POST',
             headers: {

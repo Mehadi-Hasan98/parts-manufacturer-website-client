@@ -1,22 +1,24 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 const Contact = () => {
 
     const {
         register,
-        
         handleSubmit,
+        reset,
       } = useForm();
 
       const onSubmit = async (data) => {
-        
+        toast('Send Successfully');
+        reset();
       };
 
     return (
         <div>
             <h1 className='text-3xl text-center font-bold font-mono mt-24 mb-8'>Contact Us</h1>
-            <div className='flex justify-center items-center mb-10'>
+            <div className='flex justify-center  items-center mb-10'>
             <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control w-full max-w-xs">
               {/* <label className="label">
@@ -24,12 +26,12 @@ const Contact = () => {
               </label> */}
               <input
               type="text"
-            className="w-80 rounded border-2 outline mb-4 py-3 px-2"
+            className="w-72 rounded border-2 outline mb-4 py-3 px-2"
             placeholder="Subject"
           />
               <input
               type="name"
-            className="w-80 rounded border-2 outline mb-4 py-3 px-2"
+            className="w-72 rounded border-2 outline mb-4 py-3 px-2"
             placeholder="Your Name"
            
             {...register("name", { required: true })}
@@ -37,7 +39,7 @@ const Contact = () => {
               <input
                 type="email"
                 placeholder="Your Email"
-                className="w-80 rounded border-2 outline mb-4 py-3 px-2"
+                className="w-72 rounded border-2 outline mb-4 py-3 px-2"
                 {...register("email", {
                   required: {
                     value: true,

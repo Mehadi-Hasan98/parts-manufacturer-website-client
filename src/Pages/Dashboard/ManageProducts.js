@@ -14,7 +14,7 @@ const ManageProducts = () => {
     }
     return (
         <div>
-            <h2 className='text-3xl text-center font-mono mt-10 font-bold text-white'>All Products</h2>
+            <h2 className='text-3xl text-center font-mono mt-10 font-bold text-zinc-800 mb-4'>All Products</h2>
             <div className='grid grid-cols-2'>
                 {
                     products.map(product => <AllProducts

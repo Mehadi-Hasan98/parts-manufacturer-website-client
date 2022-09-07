@@ -10,7 +10,7 @@ const AddReview = () => {
     const [user] = useAuthState(auth);
 
     const onSubmitFrom = data => {
-        const url = `http://localhost:5000/review`;
+        const url = `https://quiet-garden-90243.herokuapp.com/review`;
         fetch(url, {
             method: 'POST',
             headers: {

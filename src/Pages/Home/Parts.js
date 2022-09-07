@@ -18,7 +18,7 @@ const Parts = () => {
     }
      
     useEffect( () => {
-        fetch('http://localhost:5000/product')
+        fetch('https://quiet-garden-90243.herokuapp.com/product')
         .then(res => res.json())
         .then(data => setProducts(data))
     },[]);
@@ -48,7 +48,7 @@ const Parts = () => {
     <h6>Minimum Order: {product.order}</h6>
     <p>Description: {product.description}</p>
     <div className="card-actions">
-      <button className="btn btn-primary" onClick={ () => handlePurchase(product._id)}>Purchase</button>
+      <button className="py-2 mb-20 mt-8 px-8 bg-cyan-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 font-mono" onClick={ () => handlePurchase(product._id)}>Purchase</button>
     </div>
   </div>
 </div>

@@ -10,7 +10,7 @@ const Dashboard = () => {
     const [admin] = useAdmin(user);
     return (
         <div>
-      <div className="drawer drawer-mobile px-12">
+      <div className="drawer drawer-mobile">
         <input
           id="dashboard-sidebar"
           type="checkbox"

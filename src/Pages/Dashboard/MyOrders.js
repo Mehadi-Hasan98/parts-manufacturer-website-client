@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 
@@ -8,17 +8,30 @@ const MyOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
     const [user] = useAuthState(auth);
 
+    const navigate = useNavigate();
+
     useEffect( () => {
         const email = user.email;
-        const url = `http://localhost:5000/myitems?email=${email}`
+        const url = `https://quiet-garden-90243.herokuapp.com/myitems?email=${email}`
         fetch(url, {
             method: 'GET',
-            headers: {
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            }
+            // headers: {
+            //     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            // }
         })
-        .then(res => res.json())
-        .then(data => setMyOrders(data))
+        .then(res => {
+            console.log('res', res);
+            if(res.status === 401 || res.status === 403){
+                navigate('/');
+                // signOut(auth);
+                // localStorage.removeItem('accessToken');
+            }
+            return res.json()
+        })
+        .then(data => {
+            setMyOrders(data);
+        });
+          
     }, [user]);
 
     
@@ -41,7 +54,7 @@ const MyOrders = () => {
     return (
         <div>
             <div className="overflow-x-auto mt-16">
-                <table className="table w-full">
+                <table className="table w-full md:w-9/12 mx-10">
                     <thead>
                         <tr>
                             {/* <th>Name</th> */}

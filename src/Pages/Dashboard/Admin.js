@@ -5,8 +5,11 @@ import UserRow from './UserRow';
 
 const Admin = () => {
 
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user', {
-        method: 'GET'
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://quiet-garden-90243.herokuapp.com/user', {
+        method: 'GET',
+        headers: {
+            // authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
         
     })
     .then(res => res.json()))

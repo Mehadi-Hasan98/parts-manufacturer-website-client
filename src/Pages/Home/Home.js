@@ -1,9 +1,9 @@
 import React from 'react';
-import About from './About';
 import Banner from './Banner';
 import BusinessSummary from './BusinessSummary';
 import Contact from './Contact';
 import Parts from './Parts';
+import Portfolio from './Portfolio';
 import Review from './Review';
 
 const Home = () => {
@@ -14,7 +14,8 @@ const Home = () => {
             <BusinessSummary/>
             <Review/>
             <Contact/>
-            <About/>
+           
+            <Portfolio/>
         </div>
     );
 };
