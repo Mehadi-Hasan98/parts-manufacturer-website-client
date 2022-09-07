@@ -39,7 +39,7 @@ const MyOrders = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm("Are You Sure?");
         if (proceed) {
-          const url = `http://localhost:5000/order/${id}`;
+          const url = `https://quiet-garden-90243.herokuapp.com/order/${id}`;
           fetch(url, {
             method: "DELETE",
           })
