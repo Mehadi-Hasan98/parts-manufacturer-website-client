@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-// import {CgDanger} from 'react-icons/cg';
+
 
 const UserRow = ({user, refetch}) => {
    const [users, setUsers] = useState([]);
@@ -26,6 +26,7 @@ const UserRow = ({user, refetch}) => {
             .then((data) => {
               const remaining = users.filter((user) => user._id !== id);
               setUsers(remaining);
+              toast.success(`User removed`);
             });
         }
       };

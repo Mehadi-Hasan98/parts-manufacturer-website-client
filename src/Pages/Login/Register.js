@@ -2,7 +2,9 @@ import React from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import useToken from '../hooks/useToken';
 import Loading from '../Shared/Loading';
 import './Login.css';
 
@@ -21,6 +23,8 @@ const Register = () => {
 
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
+    const [token] = useToken(user || gUser);
+
     const navigate = useNavigate();
 
     let signInError;
@@ -34,13 +38,14 @@ const Register = () => {
     }
 
 
-    if(user || gUser){
-        navigate('/');
+    if(token){
+        navigate('/dasboard');
      }
 
      const onSubmit = async data => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
+        toast('Sign Up Successfully');
         
         console.log('update done');
         navigate('/')
