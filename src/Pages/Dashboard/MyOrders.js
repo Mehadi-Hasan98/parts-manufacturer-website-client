@@ -70,7 +70,7 @@ const MyOrders = () => {
           myOrders.map(myorder => <tr>
                   {/* <td>{myorder.name}</td> */}
                   <td>{myorder.email}</td>
-                  <td>{myorder.productName}</td>
+                  <td className='font-bold'>{myorder.productName}</td>
                   <td>{myorder.order} Pc.</td>
                   <td> {(myorder.price && !myorder.paid) && <Link to={`/dashboard/payment/${myorder._id}`}><button className='btn btn-xs btn-success'>pay</button></Link>}
                   {(myorder.price && myorder.paid) && <div>

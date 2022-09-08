@@ -9,7 +9,7 @@ const AddProducts = () => {
     const [user] = useAuthState(auth);
 
     const onSubmitForm = data =>{
-        const url = `http://localhost:5000/product`;
+        const url = `https://quiet-garden-90243.herokuapp.com/product`;
         fetch(url, {
             method: 'POST',
             headers: {
